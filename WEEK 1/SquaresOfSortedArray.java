@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class SquaresOfSortedArray {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] nums = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+
+        int[] result = new int[n];
+
+        int left = 0;
+        int right = n - 1;
+        int index = n - 1;
+
+        while (left <= right) {
+
+            int leftSquare = nums[left] * nums[left];
+            int rightSquare = nums[right] * nums[right];
+
+            if (leftSquare > rightSquare) {
+                result[index] = leftSquare;
+                left++;
+            } else {
+                result[index] = rightSquare;
+                right--;
+            }
+
+            index--;
+        }
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(result[i]);
+
+            if (i < n - 1) {
+                System.out.print(" ");
+            }
+        }
+
+        sc.close();
+    }
+}
